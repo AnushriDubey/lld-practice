@@ -1,0 +1,3 @@
+rootProject.name = 'LLD-POC'
+include 'elevator'
+include 'lld-practice'
