@@ -1,0 +1,344 @@
+Design Pattern Practice Questions 🎯
+I'll give you scenarios, and you tell me which design patterns to use!
+
+🎮 Question 1: Notification System
+Scenario: You're building a notification system for an e-commerce platform. When an order is placed:
+	• Send email notification
+	• Send SMS notification
+	• Send push notification
+	• Update dashboard
+	• Log to analytics
+In the future, you might add:
+	• Slack notifications
+	• Discord notifications
+	• Webhook calls
+Requirements:
+	• Easy to add new notification types
+	• Notifications should be sent independently (one failure shouldn't affect others)
+	• Some users might want only email, some only SMS, some both
+Question: Which design pattern(s) would you use and why?
+
+🎮 Question 2: Payment Gateway Integration
+Scenario: Your app needs to support multiple payment gateways:
+	• Stripe
+	• PayPal
+	• Razorpay
+	• Square
+Each gateway has different APIs:
+java
+// Stripe
+StripeClient.charge(amount, cardToken)
+// PayPal
+PayPalAPI.createPayment(amount, currency, payerId)
+// Razorpay
+RazorpaySDK.processPayment(orderAmount, customerDetails)
+```
+**Requirements:**
+- Client code should work with any gateway
+- Easy to switch between gateways
+- Easy to add new gateways
+- Client shouldn't know gateway-specific details
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 3: Logger System**
+**Scenario:**
+You need a logging system where:
+- Only ONE logger instance should exist throughout the application
+- Logger should be accessible globally
+- Thread-safe
+- Should write to file
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 4: Document Editor (Undo/Redo)**
+**Scenario:**
+Building a document editor where users can:
+- Type text → Undo typing
+- Delete text → Undo deletion
+- Format text (bold, italic) → Undo formatting
+- Insert images → Undo insertion
+- Support Redo for all operations
+**Requirements:**
+- Each action should be reversible
+- Keep history of actions
+- Support unlimited undo/redo
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 5: Coffee Shop System**
+**Scenario:**
+Coffee shop sells:
+- Base drinks: Espresso, Decaf, DarkRoast
+- Add-ons: Milk, Soy, Mocha, Whip
+Customer can order:
+- "Espresso with Milk and Whip"
+- "DarkRoast with Mocha and Soy and Whip"
+- Any combination
+**Requirements:**
+- Each add-on increases the price
+- Easy to add new add-ons
+- Calculate total price dynamically
+- Don't create separate class for every combination
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 6: Vehicle Manufacturing**
+**Scenario:**
+Manufacturing plant produces vehicles:
+- Cars (economy, luxury, sports)
+- Bikes (standard, racing)
+- Trucks (light, heavy)
+Each type has different:
+- Engines
+- Wheels
+- Interiors
+- Electronics
+**Requirements:**
+- Create complete vehicle with all compatible parts
+- Ensure parts are compatible (can't put car engine in bike)
+- Easy to add new vehicle types
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 7: Game Character System**
+**Scenario:**
+RPG game with characters that have:
+- Weapons (can be changed)
+- Armor (can be changed)
+- Special abilities (can be upgraded)
+- Movement types (walk, fly, swim)
+**Requirements:**
+- Characters can change weapons at runtime
+- Characters can learn new abilities
+- Some characters can fly, some swim, some both
+- Avoid deep inheritance hierarchies
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 8: Report Generation**
+**Scenario:**
+System generates reports in different formats:
+- PDF reports
+- Excel reports
+- HTML reports
+- CSV reports
+All reports follow same structure:
+1. Add header
+2. Add data rows
+3. Add footer
+4. Format and save
+But formatting differs for each type.
+**Requirements:**
+- Same generation flow for all reports
+- Each format implements its own styling
+- Easy to add new formats
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 9: Duck Simulation Game**
+**Scenario:**
+Duck pond simulation with different ducks:
+- MallardDuck (flies, quacks)
+- RubberDuck (can't fly, squeaks)
+- DecoyDuck (can't fly, can't make sound)
+- RobotDuck (flies with propeller, beeps)
+**Requirements:**
+- Not all ducks fly the same way
+- Not all ducks quack the same way
+- Easy to add new duck types
+- Change behavior at runtime (injured duck can't fly)
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 10: Configuration Manager**
+**Scenario:**
+Application has configurations that should be:
+- Loaded once at startup
+- Accessible throughout the application
+- Same instance used everywhere
+- Thread-safe
+Examples: Database URLs, API keys, feature flags
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 11: Home Automation System**
+**Scenario:**
+Smart home with devices:
+- Lights (on, off, dim)
+- TV (on, off, change channel, volume)
+- AC (on, off, temperature)
+- Music System (play, pause, volume)
+You have a universal remote with:
+- Programmable buttons
+- Each button executes an action
+- Undo button to reverse last action
+- Macro button to execute multiple actions
+**Requirements:**
+- Remote doesn't know about specific devices
+- Easy to program buttons
+- Support undo
+- Support macros (one button = multiple actions)
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 12: Media Player**
+**Scenario:**
+Media player that plays different formats:
+- MP4 (supported natively)
+- AVI (needs VLC library)
+- MKV (needs VLC library)
+- FLV (needs custom codec)
+Your player only understands MP4, but users want to play all formats.
+**Requirements:**
+- Your player code doesn't change
+- Use existing libraries (VLC, custom codec)
+- Easy to add new format support
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 13: UI Toolkit**
+**Scenario:**
+Building UI framework with components:
+- Button (has onClick)
+- Panel (contains other components)
+- Window (contains panels)
+- TextField (has onChange)
+User should interact with individual components OR groups of components the same way.
+Example:
+```
+Window
+  ├─ Panel
+  │   ├─ Button
+  │   └─ TextField
+  └─ Panel
+      └─ Button
+```
+**Requirements:**
+- Treat individual and composite objects uniformly
+- Add components to containers
+- Remove components from containers
+- Perform operations on entire tree
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 14: Database Connection Pool**
+**Scenario:**
+Creating database connections is expensive. You need:
+- Pool of reusable connections
+- Create connection only when needed (lazy)
+- Limit maximum connections
+- Reuse existing connections
+- Control access to real connection
+**Requirements:**
+- Expensive object (DB connection) created only when needed
+- Control access to real connection
+- Add additional functionality (logging, pooling)
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 15: Pizza Ordering System**
+**Scenario:**
+Pizza shop with:
+- Different bases (thin crust, thick crust, cheese burst)
+- Different sauces (tomato, pesto, BBQ)
+- Different toppings (cheese, pepperoni, olives, mushrooms)
+- Different sizes (small, medium, large)
+Creating pizza has steps:
+1. Prepare base
+2. Add sauce
+3. Add toppings
+4. Bake
+5. Package
+But steps vary by pizza type (e.g., specialty pizzas have secret recipes).
+**Requirements:**
+- Complex object with many optional parts
+- Same creation process but variations in steps
+- Readable construction code
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 16: Subscription Service**
+**Scenario:**
+Streaming service with subscriptions:
+- Free tier
+- Basic tier
+- Premium tier
+- Family tier
+Each tier has different:
+- Video quality
+- Number of devices
+- Download capability
+- Ads/No ads
+User can:
+- Upgrade subscription
+- Downgrade subscription
+- Behavior changes based on current tier
+**Requirements:**
+- Behavior changes based on state
+- Clean state transitions
+- Each state has different capabilities
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 17: Request Processing Pipeline**
+**Scenario:**
+Web application with request handling chain:
+1. Authentication filter
+2. Authorization filter
+3. Logging filter
+4. Rate limiting filter
+5. Actual request handler
+Each handler:
+- Can process request
+- Can pass to next handler
+- Can stop chain and return response
+**Requirements:**
+- Process request through multiple handlers
+- Handler can decide to pass or stop
+- Easy to add/remove handlers
+- Order matters
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 18: Stock Market Dashboard**
+**Scenario:**
+Stock market app where:
+- Stock prices change frequently
+- Multiple displays show same stock (chart, table, alert)
+- When price changes, all displays should update automatically
+- Users can add/remove displays
+**Requirements:**
+- Multiple objects depend on one object
+- Automatic notification of changes
+- Loose coupling between subject and observers
+- Easy to add new display types
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 19: Graphics Editor**
+**Scenario:**
+Graphics editor with shapes:
+- Simple shapes: Circle, Rectangle, Line
+- Complex shapes: Group of shapes
+User should:
+- Draw simple shapes
+- Group shapes together
+- Treat groups same as individual shapes
+- Nest groups within groups
+Example:
+```
+Drawing
+  ├─ Circle
+  ├─ Group
+  │   ├─ Rectangle
+  │   └─ Line
+  └─ Group
+      ├─ Circle
+      └─ Group
+          └─ Rectangle
+```
+**Requirements:**
+- Compose objects into tree structures
+- Treat individual and compositions uniformly
+- Recursive composition
+**Question:** Which design pattern(s) would you use?
+---
+## **🎮 Question 20: Translation Service**
+**Scenario:**
+Application needs to support multiple languages:
+- English
+- Spanish
+- French
+- German
+Based on user preference, show UI in their language.
+All language-specific strings in one place.
+**Requirements:**
+- Single access point to translations
+- Load translations once
+- Accessible throughout app
+- Thread-safe
+**Question:** Which design pattern(s) would you use?
